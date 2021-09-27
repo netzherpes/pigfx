@@ -1,0 +1,39 @@
+﻿1 PRINT CHR$(27);"[2J";
+2 PRINT CHR$(27);"[50;60H";
+3 PRINT "piGFX TEST on a PAL-1"
+4 FOR K=1 TO 100
+5 NEXT K
+6 PRINT CHR$(27);"[=1m"
+9 FOR I=1 TO 50
+10 GOSUB 80:X$=D$
+11 GOSUB 80:Y$=D$
+12 GOSUB 80:W$=D$
+13 GOSUB 80:H$=D$
+14 GOSUB 80:CO$=D$
+29 PRINT CHR$(27);"[38;5;";CO$;"m";
+30 PRINT CHR$(27);"[#";X$;";";Y$;";";W$;";";H$;"r";
+40 NEXT I
+41 PRINT CHR$(27);"[2J"
+49 FOR J = 1 TO 50 
+50 GOSUB 80:X$=D$
+51 GOSUB 80:Y$=D$
+52 GOSUB 80:W$=D$
+54 GOSUB 80:CO$=D$
+59 PRINT CHR$(27);"[38;5;";CO$;"m";
+60 PRINT CHR$(27);"[#";X$;";";Y$;";";W$;"c";
+61 NEXT J
+62 PRINT: PRINT CHR$(27);"[20;20H";
+63 PRINT "Thats it folks. Greetings to"
+64 GOSUB 80:X$=D$:GOSUB 80:Y$=D$
+65 PRINT: PRINT CHR$(27);"[";X$;";";Y$;"H";"JOHN, LIU"
+66 GOSUB 80:X$=D$:GOSUB 80:Y$=D$
+67 PRINT: PRINT CHR$(27);"[";X$;";";Y$;"H";"HANS, HJM"
+68 GOSUB 80:X$=D$:GOSUB 80:Y$=D$
+69 PRINT: PRINT CHR$(27);"[";X$;";";Y$;"H";"And all the rest of the ";
+70 PRINT "KIM-1 Crew"
+71 PRINT CHR$(27);"[=0m"
+79 END
+80 REM Random Generator wo leading Space
+81 A=RND(2):A=RND(2)*300
+82 B=INT(A):C$=STR$(B):D$=MID$(C$,2)
+83 RETURN
